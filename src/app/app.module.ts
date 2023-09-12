@@ -5,9 +5,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './shared/components/home/home.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { ModelsComponent } from './shared/models/models.component';
-import { LoginComponent } from './login/login.component';
-import { EventsComponent } from './events/events.component';
-import { RegistrationComponent } from './registration/registration.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 
 
@@ -17,9 +14,6 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     HomeComponent,
     NavbarComponent,
     ModelsComponent,
-    LoginComponent,
-    EventsComponent,
-    RegistrationComponent,
     FooterComponent,
   ],
   imports: [
