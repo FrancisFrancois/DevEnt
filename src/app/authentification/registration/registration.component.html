@@ -5,44 +5,55 @@
     </div>
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
       <div class="bg-fuchsia-200 px-6 py-12 shadow sm:rounded-lg sm:px-12">
-        <form class="space-y-6" action="#" method="POST">
+
+        <form class="space-y-6" [formGroup]="registerForm" (ngSubmit)="createUser()">
           <div>
             <label for="pseudo" class="block text-sm font-bold leading-6 text-blue-700">Login or pseudo</label>
             <div class="mt-2">
-              <input id="pseudo" name="pseudo" type="pseudo" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 font-bold shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <input id="pseudo" name="pseudo" type="text" required formControlName="pseudo" class="block w-full rounded-md border-0 py-1.5 text-gray-900 font-bold shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <span class="text-sm text-red-600" *ngIf="registerForm.get('pseudo')?.touched && registerForm.get('pseudo')?.errors?.['required']">Champs requis</span>
             </div>
           </div>
           <div>
             <label for="email" class="block text-sm font-bold leading-6 text-blue-700">Email</label>
             <div class="mt-2">
-              <input id="email" name="email" type="email"  required class="block w-full rounded-md border-0 py-1.5 text-gray-900 font-bold shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <input id="email" name="email" type="email" required formControlName="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 font-bold shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <span class="text-sm text-red-600" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['required']">Champs requis</span>
+              <span class="text-sm text-red-600" *ngIf="registerForm.get('email')?.errors?.['email']">Format de mail invalide</span>
             </div>
           </div>
           <div>
             <label for="password" class="block text-sm font-bold leading-6 text-blue-700">Password</label>
             <div class="mt-2">
-              <input id="password" name="password" type="password"  required class="block w-full rounded-md border-0 py-1.5 text-gray-900 font-bold shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <input id="password" name="password" type="password" required formControlName="password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 font-bold shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <span class="text-sm text-red-600" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.errors?.['required']">Champs requis</span>
+              <span class="text-sm text-red-600" *ngIf="registerForm.get('password')?.errors?. ['pattern']">Votre mot de passe doit contenir au moins 8 caractères dont une minuscule, une majuscule et un chiffre</span>
             </div>
           </div>
           <div>
             <label for="confirmpassword" class="block text-sm font-bold leading-6 text-blue-700">Confirm Password</label>
             <div class="mt-2">
-              <input id="confirmpassword" name="confirmpassword" type="password"  required class="block w-full rounded-md border-0 py-1.5 text-gray-900 font-bold shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <input id="confirmpassword" name="confirmpassword" type="password" required formControlName="confirmpassword" class="block w-full rounded-md border-0 py-1.5 text-gray-900 font-bold shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <span class="text-sm text-red-600" *ngIf="registerForm.get('confirmpassword')?.touched && registerForm.get('confirmpassword')?.hasError('required')">Champ requis</span>
+              <span class="text-sm text-red-600" *ngIf="registerForm.hasError('passwordMismatch') && registerForm.get('confirmpassword')?.touched">Les mots de passe ne correspondent pas</span>
             </div>
           </div>
           <div>
-            <label for="name" class="block text-sm font-bold leading-6 text-blue-700">Name</label>
+            <label for="lastname" class="block text-sm font-bold leading-6 text-blue-700">Name</label>
             <div class="mt-2">
-              <input id="name" name="name" type="text"  required class="block w-full rounded-md border-0 py-1.5 text-gray-900 font-bold shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <input id="lastname" name="lastname" type="text" required formControlName="lastname" class="block w-full rounded-md border-0 py-1.5 text-gray-900 font-bold shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <span class="text-sm text-red-600" *ngIf="registerForm.get('lastname')?.touched && registerForm.get('lastname')?.errors?.['required']">Champs requis</span>
+              <span class="text-sm text-red-600" *ngIf="registerForm.get('lastname')?.errors?.['pattern']">Vous ne pouvez pas rentrer de chiffres</span>
             </div>
           </div>
           <div>
             <label for="firstname" class="block text-sm font-bold leading-6 text-blue-700">Firstname</label>
             <div class="mt-2">
-              <input id="firstname" name="firstname" type="text"  required class="block w-full rounded-md border-0 py-1.5 text-gray-900 font-bold shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <input id="firstname" name="firstname" type="text" required formControlName="firstname" class="block w-full rounded-md border-0 py-1.5 text-gray-900 font-bold shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <span class="text-sm text-red-600" *ngIf="registerForm.get('firstname')?.touched && registerForm.get('firstname')?.errors?.['required']">Champs requis</span>
+              <span class="text-sm text-red-600" *ngIf="registerForm.get('firstname')?.errors?.['pattern']">Vous ne pouvez pas rentrer de chiffres</span>
             </div>
           </div>
-  
           <div class="flex items-center justify-between">
             <div class="flex items-center">
             </div>
@@ -52,7 +63,6 @@
               </span>
             </div>
           </div>
-  
           <div>
             <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Register</button>
           </div>
