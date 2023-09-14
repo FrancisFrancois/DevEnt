@@ -41,17 +41,17 @@
           <div>
             <label for="lastname" class="block text-sm font-bold leading-6 text-blue-700">Name</label>
             <div class="mt-2">
-              <input id="lastname" name="lastname" type="text" required formControlName="lastname" class="block w-full rounded-md border-0 py-1.5 text-gray-900 font-bold shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-              <span class="text-sm text-red-600" *ngIf="registerForm.get('lastname')?.touched && registerForm.get('lastname')?.errors?.['required']">Champs requis</span>
-              <span class="text-sm text-red-600" *ngIf="registerForm.get('lastname')?.errors?.['pattern']">Vous ne pouvez pas rentrer de chiffres</span>
+              <input id="lastName" name="lastName" type="text" required formControlName="lastName" class="block w-full rounded-md border-0 py-1.5 text-gray-900 font-bold shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <span class="text-sm text-red-600" *ngIf="registerForm.get('lastName')?.touched && registerForm.get('lastName')?.errors?.['required']">Champs requis</span>
+              <span class="text-sm text-red-600" *ngIf="registerForm.get('lastName')?.errors?.['pattern']">Vous ne pouvez pas rentrer de chiffres</span>
             </div>
           </div>
           <div>
             <label for="firstname" class="block text-sm font-bold leading-6 text-blue-700">Firstname</label>
             <div class="mt-2">
-              <input id="firstname" name="firstname" type="text" required formControlName="firstname" class="block w-full rounded-md border-0 py-1.5 text-gray-900 font-bold shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-              <span class="text-sm text-red-600" *ngIf="registerForm.get('firstname')?.touched && registerForm.get('firstname')?.errors?.['required']">Champs requis</span>
-              <span class="text-sm text-red-600" *ngIf="registerForm.get('firstname')?.errors?.['pattern']">Vous ne pouvez pas rentrer de chiffres</span>
+              <input id="firstName" name="firstName" type="text" required formControlName="firstName" class="block w-full rounded-md border-0 py-1.5 text-gray-900 font-bold shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <span class="text-sm text-red-600" *ngIf="registerForm.get('firstName')?.touched && registerForm.get('firstName')?.errors?.['required']">Champs requis</span>
+              <span class="text-sm text-red-600" *ngIf="registerForm.get('firstName')?.errors?.['pattern']">Vous ne pouvez pas rentrer de chiffres</span>
             </div>
           </div>
           <div class="flex items-center justify-between">

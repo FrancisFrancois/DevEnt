@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ValidationErrors } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoggerService } from 'src/app/shared/services/logger.service';
 
 @Component({
   selector: 'app-registration',
@@ -10,14 +12,17 @@ export class RegistrationComponent {
 
   registerForm: FormGroup;
 
-  constructor(private _fb: FormBuilder) {
+  constructor(private _fb: FormBuilder,
+              private _loggerService : LoggerService,
+              private _router : Router) {
+
     this.registerForm = this._fb.group({
       pseudo: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)]],
       confirmpassword: [null, [Validators.required]],
-      lastname: [null, [Validators.required]],
-      firstname: [null, [Validators.required]]
+      firstName: [null, [Validators.required]],
+      lastName: [null, [Validators.required]]
     }, {
       validators: this.passwordMatchValidator
     });
@@ -39,12 +44,17 @@ export class RegistrationComponent {
 
   createUser() {
     if (this.registerForm.valid) {
+      this._loggerService.create(this.registerForm.value).subscribe({
+        complete : () => {
+          this._router.navigateByUrl('/')
+        }
+      });
       console.log(this.registerForm.value);
-      console.log("FORMULAIRE VALIDE 🥳");
+      console.log("FORMULAIRE VALIDE");
     }
     else {
       this.registerForm.markAllAsTouched();
-      console.log("FORMULAIRE INVALIDE 🤡");
+      console.log("FORMULAIRE INVALIDE");
     }
   }
 

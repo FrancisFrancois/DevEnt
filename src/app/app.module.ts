@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './shared/components/home/home.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './authentification/login/login.component';
 
 
 @NgModule({
@@ -13,10 +15,12 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     HomeComponent,
     NavbarComponent,
     FooterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
