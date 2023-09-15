@@ -6,6 +6,7 @@ import { HomeComponent } from './shared/components/home/home.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ListEventsComponent } from './events/list-events/list-events.component';
 
 
 @NgModule({
@@ -14,6 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     NavbarComponent,
     FooterComponent,
+    ListEventsComponent,
+
     
   ],
   imports: [

@@ -7,6 +7,7 @@ const routes: Routes = [
   { path : "", component : HomeComponent},
   { path : "home", redirectTo : "/"},
   { path : "authentification", loadChildren : () => import("./authentification/authentification.module").then(m => m.AuthentificationModule) },
+  { path : "events", loadChildren : () => import("./events/events.module").then(m => m.EventsModule) }
 ];
 
 @NgModule({
