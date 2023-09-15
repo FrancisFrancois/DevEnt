@@ -17,12 +17,12 @@
       <div class="hidden lg:flex lg:gap-x-12">
         <a routerLink="/" class="text-sm font-semibold leading-6 text-gray-900">Acceuil</a>
         <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Les événements</a>
-        <span *ngIf="connectedUser" class="text-sm font-semibold leading-6 text-fuchsia-600">Bonjour {{connectedUser.identifier}}</span>
+        <span *ngIf="connectedUser" class="text-xl font-semibold leading-6 text-fuchsia-600">Bonjour {{connectedUser.firstname}}</span>
         <span *ngIf="!connectedUser" class="text-sm font-semibold leading-6 text-fuchsia-600"></span>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <a *ngIf="!connectedUser" routerLink="authentification/login" class="text-sm font-semibold leading-6 text-gray-900">Se connecter <span aria-hidden="true">&rarr;</span></a>
-        <a *ngIf="connectedUser" (click)="logout()"  class="text-sm font-semibold leading-6 text-gray-900">Se déconnecter <span aria-hidden="true">&rarr;</span></a>
+        <a *ngIf="!connectedUser" routerLink="authentification/login" class="text-sm font-semibold leading-6 text-gray-900 cursor-pointer">Se connecter <span aria-hidden="true">&rarr;</span></a>
+        <a *ngIf="connectedUser" (click)="logout()"  class="text-sm font-semibold leading-6 text-gray-900 cursor-pointer">Se déconnecter <span aria-hidden="true">&rarr;</span></a>
       </div>
     </nav>
     <!-- Mobile menu, show/hide based on menu open state. -->

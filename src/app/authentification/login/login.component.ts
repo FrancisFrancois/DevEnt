@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { LoginUser } from 'src/app/shared/models/loginUser';
+import { Member } from 'src/app/shared/models/connectedUser';
 import { FakeAuthService } from 'src/app/shared/services/fake-auth.service';
 
 @Component({
@@ -9,38 +10,40 @@ import { FakeAuthService } from 'src/app/shared/services/fake-auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  connectedUser : LoginUser | undefined;
-  identifier : string = '';
-  password : string = '';
+  connectedUser : Member | undefined;
   errorMsg : string = '';
 
   userSub : Subscription = new Subscription();
 
-  constructor(private _fakeAuthService : FakeAuthService) {
+  loginForm : FormGroup;
 
+  constructor(private _fakeAuthService : FakeAuthService,
+              private _fb : FormBuilder
+              ) {
+    this.loginForm = this._fb.group({
+      identifier : [null, [Validators.required]],
+      password : [null, [Validators.required]]
+    });
   }
 
   ngOnInit(): void {
-    console.log("INIT Login")
     this.userSub = this._fakeAuthService.$connectedUser.subscribe({
       next : (value) => {
         this.connectedUser = value;
-        console.log("NEXT IN Login : ", value)
       }
     })
   }
 
   ngOnDestroy(): void {
-    console.log("DESTROY");
+    console.log("UNSUBSCRIBE");
     this.userSub.unsubscribe();  
   }
 
   connect() : void {
-    this._fakeAuthService.login(this.identifier, this.password);
+    this._fakeAuthService.login(this.loginForm.value);
 
     if(this.connectedUser) {
-      this.identifier = '';
-      this.password = '';
+      this.loginForm.patchValue({identifier : "", password : ""})
       this.errorMsg = '';
     } else {
       this.errorMsg = 'Email ou mot de passe invalide';

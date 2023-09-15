@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FakeAuthService } from '../../services/fake-auth.service';
 import { LoginUser } from '../../models/loginUser';
+import { Member } from '../../models/connectedUser';
 
 @Component({
   selector: 'app-navbar',
@@ -9,19 +10,16 @@ import { LoginUser } from '../../models/loginUser';
 })
 export class NavbarComponent {
   
-  connectedUser : LoginUser | undefined;
+  connectedUser : Member | undefined;
 
    constructor(private _fakeAuthService : FakeAuthService) {
 
    }
 
    ngOnInit(): void {
-       console.log("INIT LOGIN NAVBAR");
        this._fakeAuthService.$connectedUser.subscribe({
         next : (value) => {
           this.connectedUser = value;
-          console.log("NEXT LOGIN IN NAVBAR : ", value);
-          
         },
         error : (err) => {
         },
